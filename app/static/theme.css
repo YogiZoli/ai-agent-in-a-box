@@ -1,0 +1,224 @@
+/* ============================================================================
+   Publishing Dream Team  brand theme: "Shine" (2026-09-26)
+   Source of truth: C:\Users\gdp\projects\design-system\shine\tokens.css
+   Light theme only. Fuchsia CTA, ink secondary, blue-green live accent.
+   Every filled button is solid with white text, at least 4.5:1.
+   ========================================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700;800&family=Geist+Mono:wght@500;700&display=swap');
+
+:root {
+  /* Primary: fuchsia, the action colour */
+  --primary-50:#FFE9EF; --primary-100:#FFD0DD; --primary-300:#F2708F;
+  --primary-500:#E42256; --primary-600:#D91E50; --primary-700:#B3163F; --primary-800:#A3143A;
+
+  /* Live accent: blue-green, motion only. Never text. */
+  --live-50:#E3F7F6; --live-500:#00B1B0; --live-700:#00807F; --live-800:#006564;
+
+  /* Glow colours: background light only */
+  --coral:#FF8370; --freesia:#FEC84D;
+
+  /* Neutrals: cool, crisp */
+  --ink:#0E1330; --ink-2:#2A3048; --label:#4A5068; --muted-text:#666C84;
+  --border-strong-c:#D5D8E3; --border-c:#E6E8F0; --surface-alt-c:#F0F1F6;
+  --ground:#F7F8FB; --white:#FFFFFF;
+
+  /* Semantic. Danger is warm orange-red so it never reads as the CTA. */
+  --success:#0B7A3E; --success-surface:#E3F3E8;
+  --warning-text:#6B4E00; --warning-dot:#E5A400; --warning-surface:#FBF2DD;
+  --danger-text:#A33A00; --danger-dot:#F2651B; --danger-surface:#FFF1E8;
+  --danger-border:rgba(242,101,27,.4);
+
+  /* Role tokens */
+  --background:var(--ground);
+  --foreground:var(--ink);
+  --surface:var(--white);
+  --surface-alt:var(--surface-alt-c);
+  --muted:var(--surface-alt-c);
+  --muted-foreground:var(--muted-text);
+  --primary:var(--primary-600);
+  --primary-hover:var(--primary-700);
+  --primary-foreground:#FFFFFF;
+  --secondary:var(--ink);
+  --secondary-hover:#1E2446;
+  --secondary-foreground:#FFFFFF;
+  --link:var(--live-700);
+  --link-hover:var(--live-800);
+  --live:var(--live-500);
+  --border:var(--border-c);
+  --border-strong:var(--border-strong-c);
+  --input:var(--border-strong-c);
+  --ring:rgba(217,30,80,.2);
+  --ring-solid:var(--primary-600);
+
+  --font-sans:"Open Sans","Segoe UI",system-ui,sans-serif;
+  --font-mono:"Geist Mono",ui-monospace,Menlo,monospace;
+
+  --text-xs:0.8125rem; --text-sm:0.9375rem; --text-base:1rem; --lh-base:1.55;
+  --text-lg:1.125rem; --text-xl:1.375rem; --text-2xl:1.75rem; --text-3xl:2rem; --text-4xl:2.5rem;
+  --weight-normal:400; --weight-medium:500; --weight-semibold:600;
+  --weight-bold:700; --weight-extrabold:800;
+
+  --space-0:0; --space-1:0.125rem; --space-2:0.25rem; --space-3:0.5rem;
+  --space-4:0.75rem; --space-5:1rem; --space-6:1.25rem; --space-7:1.5rem;
+  --space-8:2rem; --space-9:2.5rem; --space-10:3rem; --space-12:4rem;
+
+  --radius-sm:6px; --radius-md:10px; --radius-lg:12px; --radius-xl:18px;
+  --radius-2xl:24px; --radius-full:9999px;
+  --border-width:1px;
+
+  --shadow-xs:0 1px 2px rgba(14,19,48,.06);
+  --shadow-sm:0 1px 3px rgba(14,19,48,.08),0 1px 2px rgba(14,19,48,.04);
+  --shadow-md:0 4px 12px rgba(14,19,48,.08);
+  --shadow-lg:0 12px 28px rgba(14,19,48,.12);
+  --shadow-cta:0 6px 20px rgba(255,131,112,.35);
+
+  --duration-fast:120ms; --duration-base:180ms; --duration-slow:280ms;
+  --ease-standard:cubic-bezier(.4,0,.2,1);
+  --ease-out:cubic-bezier(0,0,.2,1);
+  --ease-inout:cubic-bezier(.4,0,.2,1);
+
+  /* Decorative */
+  --dot-grid:radial-gradient(rgba(14,19,48,.07) 1px,transparent 1px);
+  --hero-glow:radial-gradient(520px 260px at 100% 0%,rgba(255,131,112,.22),transparent 70%),
+              radial-gradient(360px 200px at 0% 100%,rgba(254,200,77,.22),transparent 70%);
+  --hairline:linear-gradient(90deg,var(--primary-600),var(--live-500));
+  --hero-wash:var(--hero-glow);
+
+  --primary-surface:var(--primary-50); --primary-surface-foreground:var(--primary-800);
+  --warning:var(--warning-dot);
+  --danger:var(--danger-text); --danger-hover:#8A3000;
+}
+
+/* ---- base ---- */
+*,*::before,*::after{box-sizing:border-box;}
+body{
+  font-family:var(--font-sans);
+  font-size:var(--text-base); line-height:var(--lh-base);
+  color:var(--foreground); background:var(--background) var(--dot-grid) 0 0/20px 20px;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:var(--link); text-decoration:none;}
+a:hover{color:var(--link-hover); text-decoration:underline; text-underline-offset:2px;}
+h1,h2,h3{text-wrap:balance;}
+button,input,select,textarea{font-family:inherit;}
+
+/* ---- buttons ---- */
+.btn,button.btn{
+  display:inline-flex; align-items:center; justify-content:center; gap:8px;
+  min-height:44px; padding:12px 22px;
+  border:1px solid transparent; border-radius:var(--radius-md);
+  font:inherit; font-weight:600; line-height:1; cursor:pointer; text-decoration:none;
+  transition:background-color .18s var(--ease-standard),box-shadow .18s var(--ease-standard),transform .12s var(--ease-standard);
+}
+.btn:focus-visible,button.btn:focus-visible{outline:2px solid var(--ring-solid); outline-offset:2px;}
+.btn:active{transform:scale(.98);}
+.btn-primary{background:var(--primary); color:var(--primary-foreground); box-shadow:var(--shadow-sm);}
+.btn-primary:hover{background:var(--primary-hover); box-shadow:var(--shadow-md); color:var(--primary-foreground); text-decoration:none;}
+.btn-secondary{background:var(--secondary); color:var(--secondary-foreground); box-shadow:var(--shadow-sm);}
+.btn-secondary:hover{background:var(--secondary-hover); box-shadow:var(--shadow-md); color:var(--secondary-foreground); text-decoration:none;}
+.btn-ghost{background:var(--surface); color:var(--foreground); border-color:var(--border-strong);}
+.btn-ghost:hover{background:var(--surface-alt); border-color:var(--muted-foreground); color:var(--foreground); text-decoration:none;}
+/* Destructive actions (Disconnect). Warm orange-red (never the CTA fuchsia), so an action that takes
+   something away never looks like an action that gives something. */
+.btn-danger{background:var(--danger); color:#fff; border-color:var(--danger);}
+.btn-danger:hover{background:var(--danger-hover); border-color:var(--danger-hover); color:#fff; text-decoration:none;}
+.btn:disabled,button.btn:disabled{opacity:.5; cursor:not-allowed; box-shadow:none;}
+
+/* The one pulsing primary action per page: halo plus a light sheen sweep.
+   Does not shift layout. */
+.btn-pulse{position:relative; overflow:hidden; animation:cta-halo 2.4s var(--ease-out) infinite;}
+.btn-pulse::after{
+  content:""; position:absolute; top:0; bottom:0; left:0; width:40%;
+  background:linear-gradient(100deg,transparent,rgba(255,255,255,.35),transparent);
+  animation:sheen 3.2s ease-in-out infinite; pointer-events:none;
+}
+.btn-primary:hover{transform:translateY(-1px);}
+@keyframes cta-halo{
+  0%{box-shadow:0 0 0 0 rgba(228,34,86,.5),var(--shadow-cta);}
+  70%{box-shadow:0 0 0 14px transparent,var(--shadow-cta);}
+  100%{box-shadow:0 0 0 0 transparent,var(--shadow-cta);}
+}
+@keyframes num-pop{0%{transform:scale(1);}30%{transform:scale(1.09);text-shadow:0 0 22px rgba(255,131,112,.35);}60%{transform:scale(.98);}100%{transform:scale(1);text-shadow:none;}}
+@keyframes sheen{0%,70%{transform:translateX(-120%);}100%{transform:translateX(220%);}}
+@keyframes ping{75%,100%{transform:scale(2.2);opacity:0;}}
+@keyframes bar-grow{from{transform:scaleX(0);}to{transform:scaleX(1);}}
+@keyframes card-in{from{opacity:0;transform:translateY(14px) scale(.985);}to{opacity:1;transform:none;}}
+@keyframes row-in{from{opacity:0;transform:translateY(-8px);background:var(--primary-50);}to{opacity:1;transform:none;background:transparent;}}
+@keyframes toast-in{from{opacity:0;transform:translate(-50%,16px);}to{opacity:1;transform:translate(-50%,0);}}
+@keyframes shimmer{from{background-position:-400px 0;}to{background-position:400px 0;}}
+.btn .arrow{transition:transform .18s var(--ease-standard);}
+.btn:hover .arrow{transform:translateX(3px);}
+
+/* ---- surfaces ---- */
+.card{
+  background:var(--surface); color:var(--foreground);
+  border:1px solid var(--border); border-radius:var(--radius-lg);
+  padding:20px; box-shadow:var(--shadow-xs);
+}
+
+/* ---- form ---- */
+.input,input.input{
+  width:100%; min-height:44px; padding:12px 14px;
+  border:1px solid var(--border-strong); border-radius:var(--radius-md);
+  background:var(--surface); color:var(--foreground); font:inherit;
+  transition:border-color .18s var(--ease-standard),box-shadow .18s var(--ease-standard);
+}
+.input::placeholder{color:var(--muted-foreground);}
+.input:focus-visible{outline:none; border-color:var(--primary); box-shadow:0 0 0 3px var(--ring);}
+.input:disabled{background:var(--surface-alt); color:var(--muted-foreground); cursor:not-allowed;}
+
+/* ---- bits ---- */
+.badge{
+  display:inline-flex; align-items:center; gap:5px;
+  padding:3px 10px; border-radius:999px;
+  font-size:.72rem; font-weight:700; letter-spacing:.03em;
+  background:var(--primary-surface); color:var(--primary-surface-foreground);
+}
+.badge.warn{background:var(--warning-surface); color:var(--warning-text);}
+.pill{font-size:.78rem; border-radius:999px; padding:3px 12px; font-weight:700;}
+.pill.on{background:var(--success-surface); color:var(--success);}
+.pill.off{background:var(--surface-alt); color:var(--muted-foreground);}
+
+.note-err{
+  background:var(--danger-surface); border:1px solid var(--danger-border); color:var(--danger-text);
+  padding:14px; border-radius:var(--radius-md); font-size:var(--text-sm);
+}
+.note-ok{
+  background:var(--success-surface); border:1px solid rgba(11,122,62,.3); color:var(--success);
+  padding:14px; border-radius:var(--radius-md); font-weight:600;
+}
+
+pre,.pre{
+  white-space:pre-wrap; font-family:var(--font-mono); font-size:.9rem;
+  background:var(--surface-alt); border-radius:var(--radius-sm); padding:12px; margin:0;
+  color:var(--foreground);
+}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none !important; transition-duration:.01ms !important;}
+}
+
+/* ---- Shine micro-interactions ------------------------------------------
+   Entrance for every card; the global reduced-motion rule above turns all of
+   these off. shine.js adds count-up on figures and window.shineToast. */
+.card{animation:card-in .4s var(--ease-out) backwards}
+.page .card:nth-child(2){animation-delay:.05s}
+.page .card:nth-child(3){animation-delay:.1s}
+.page .card:nth-child(4){animation-delay:.15s}
+
+/* Skeleton: shimmer bars while a list loads. */
+.skel{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:14px}
+.skel i{display:block;aspect-ratio:16/11;border-radius:var(--radius-md);
+  background:linear-gradient(90deg,var(--surface-alt) 25%,var(--white) 50%,var(--surface-alt) 75%) 0 0/800px 100%;
+  animation:shimmer 1.4s linear infinite}
+
+/* Empty state: a radar ring that pings above the message. */
+.empty::before{content:"";display:block;width:14px;height:14px;margin:0 auto 14px;border-radius:50%;
+  border:2px solid var(--live);animation:ping 1.8s cubic-bezier(0,0,.2,1) infinite}
+
+/* Toast, bottom centre, above the mobile tab bar. */
+.shine-toast{position:fixed;left:50%;bottom:84px;z-index:80;transform:translate(-50%,16px);opacity:0;
+  pointer-events:none;background:var(--ink);color:#fff;padding:12px 20px;border-radius:var(--radius-md);
+  font-size:.95rem;font-weight:600;box-shadow:var(--shadow-lg);max-width:calc(100vw - 32px)}
+.shine-toast.show{opacity:1;animation:toast-in .3s var(--ease-out) both}
+@media (min-width:721px){.shine-toast{bottom:28px}}
